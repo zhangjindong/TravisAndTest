@@ -3,18 +3,26 @@ node_js:
 - '8'
 sudo: required
 before_install:
+- echo "==============================openssl==================="
 - openssl aes-256-cbc -K $encrypted_fb7a5ab59a36_key -iv $encrypted_fb7a5ab59a36_iv
   -in dong_key.enc -out dong_key -d
+- echo "==============================copy dong_key FIle==================="
 - mv dong_key ~/.ssh -f
 - chmod 600 ~/.ssh/dong_key
 - eval $(ssh-agent)
 - ssh-add ~/.ssh/dong_key
+- echo "==============================copy ssh_config File==================="
 - cp .travis/ssh_config ~/.ssh/config
 - chmod 600 ~/.ssh/config
 install:
 - yarn install
-script: "-yarn run test"
+- echo "==============================yarn install end==================="
+script: 
+- echo "==============================yarn run test==================="
+  - yarn run test
+- echo "==============================yarn run end==================="
 after_success:
+- echo "==============================sucess  scp to dong==================="
 - scp -r -o StrictHostKeyChecking=no ./build dong:/root/
 
 # addons:
