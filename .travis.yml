@@ -16,3 +16,6 @@ install:
 script: "-yarn run test"
 after_success:
 - scp -r -o StrictHostKeyChecking=no ./build dong:/root/
+
+# addons:
+# - ssh _known_hosts:"IP"
