@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- '8'
+sudo: required
+
+before_install:
+- mv dong_key ~/.ssh -f
+- chmod 600 ~/.ssh/dong_key
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/dong_key
+- cp .travis/ssh_config ~/.ssh/config
+- chmod 600 ~/.ssh/config
+install:
+- yarn install
+script: 
+  -yarn run test 
+after_success:
+- scp -r -o StrictHostKeyChecking=no ./build dong:/root/
+# - ssh -o StrictHostKeyChecking=no dong  
+# - pm2 /root/build/app.js
