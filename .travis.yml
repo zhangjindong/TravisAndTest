@@ -24,6 +24,8 @@ script:
   - yarn run test
 - echo "==============================yarn run end==================="
 after_success:
+- echo "==============================remove node_modules==================="
+- rm -rf node_modules
 - echo "==============================sucess  scp to dong==================="
 - scp -r -o StrictHostKeyChecking=no ../TravisAndTest dong:/root/
 - echo "==============================sucess  scp to dong end==================="
