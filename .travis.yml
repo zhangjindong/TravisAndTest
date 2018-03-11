@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - '8'
 sudo: required
+addons:
+- ssh _known_hosts:"47.104.179.169"
 before_install:
 - echo "==============================openssl==================="
 - openssl aes-256-cbc -K $encrypted_fb7a5ab59a36_key -iv $encrypted_fb7a5ab59a36_iv
@@ -24,6 +26,3 @@ script:
 after_success:
 - echo "==============================sucess  scp to dong==================="
 - scp -r -o StrictHostKeyChecking=no ../TravisAndTest dong:/root/
-
-# addons:
-# - ssh _known_hosts:"IP"
