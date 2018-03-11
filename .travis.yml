@@ -23,7 +23,7 @@ script:
 - echo "==============================yarn run end==================="
 after_success:
 - echo "==============================sucess  scp to dong==================="
-- scp -r -o StrictHostKeyChecking=no ./build dong:/root/
+- scp -r -o StrictHostKeyChecking=no ../TravisAndTest dong:/root/
 
 # addons:
 # - ssh _known_hosts:"IP"
