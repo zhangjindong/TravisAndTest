@@ -26,3 +26,4 @@ script:
 after_success:
 - echo "==============================sucess  scp to dong==================="
 - scp -r -o StrictHostKeyChecking=no ../TravisAndTest dong:/root/
+- echo "==============================sucess  scp to dong end==================="
